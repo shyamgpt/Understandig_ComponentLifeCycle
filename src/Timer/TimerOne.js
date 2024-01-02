@@ -33,9 +33,6 @@ export default class Timer extends React.Component{
         console.log("TimerOne render")
         return(
             <>
-            {/* <h1>Counter</h1>
-            <h2>{this.state.count}</h2>
-            <button onClick ={this.handleIncrease}>Increase</button> */}
             <h1>
                 Time spent: {new Date(this.state.time *1000).toISOString().slice(11,19)}
             </h1>
@@ -51,8 +48,8 @@ export default class Timer extends React.Component{
 
         this.timer = setInterval(() =>{
             this.setState((prevState) =>({time: prevState.time+1}))
-            // this.setState((prevState) => (return {time: prevState.time+1})
-        }, 1000);
+           
+        }, 5000);
     }
 
     //Updating Phase
@@ -62,13 +59,14 @@ export default class Timer extends React.Component{
     }
 
     //Updating Phase
-    componentDidUpdate(){
+    componentDidUpdate(prevProps,prevState,snapShot){
+        //All the parameter inside this fucntion is optional
         console.log("TimerOne componentDidUpdate")
         console.log("----------------------------")
+        console.log("Previous Props: ",prevProps);
+        console.log("Previous State:", prevState);
+        console.log("SnapShot from getSnapshotBrforeUpdate: ", snapShot);
 
-        // if(this.state.time == 10){
-        //     clearInterval(this.timer);
-        // }
     }
 
     componentWillUnmount(){
