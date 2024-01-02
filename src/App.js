@@ -3,12 +3,27 @@ import React from "react";
 import TimerOne from "./Timer/TimerOne";
 
 class App extends React.Component {
+  constructor(){
+    super();
+
+    this.state ={
+      mount: false
+    }
+  }
+
+  handleMount =() =>{
+    this.setState((prevState) => ({mount: !prevState.mount}));
+  }
  
   render(){
     return (
     
-      // <ComponentA/>
-      <TimerOne/>
+      <>
+      <button onClick={this.handleMount}>{this.state.mount ? "UN-MOUNT" : "MOUNT"}</button>
+      {this.state.mount ?<TimerOne/>: null}
+      
+      </>
+      
       );
   }
 }

@@ -27,11 +27,6 @@ export default class Timer extends React.Component{
         return true;
     }
 
-    // handleIncrease = () =>{
-    //     this.setState((prevState) =>{
-    //         return {count: prevState.count+1}
-    //     })
-    // }
 
     //Updating Phase also Mounting Phase
     render(){
@@ -70,5 +65,14 @@ export default class Timer extends React.Component{
     componentDidUpdate(){
         console.log("TimerOne componentDidUpdate")
         console.log("----------------------------")
+
+        // if(this.state.time == 10){
+        //     clearInterval(this.timer);
+        // }
+    }
+
+    componentWillUnmount(){
+        console.log("TimerOne componentWillUnmount")
+        clearInterval(this.timer);
     }
 }
